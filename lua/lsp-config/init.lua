@@ -3,6 +3,7 @@ local opts = { noremap=true, silent=true }
 local keymap = vim.keymap.set
 local bufopts = { noremap=true, silent=true, buffer=bufnr }
 
+
 -- Mappings
 local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -16,6 +17,7 @@ local on_attach = function(client, bufnr)
 
 end
 
+-- Rust
 require("lspconfig")["rust_analyzer"].setup{
     on_attach = on_attach,
     flags = lsp_flags,
@@ -24,4 +26,23 @@ require("lspconfig")["rust_analyzer"].setup{
     }
 }
 
+-- Python
+require("lspconfig")["pyright"].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    settings = {
+        ["pyright"] = {}
+    }
+}
+
+-- Bash
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'sh',
+  callback = function()
+    vim.lsp.start({
+      name = 'bash-language-server',
+      cmd = { 'bash-language-server', 'start' },
+    })
+  end,
+})
 

@@ -10,5 +10,3 @@ require('fzf-config')
 
 -- Themes
 vim.cmd("colorscheme everblush")
-
-

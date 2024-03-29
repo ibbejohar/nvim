@@ -8,7 +8,7 @@ require('statusline')
 require('lsp-config')
 require('tree-sitter')
 require('mason-lsp')
-require('telescope')
+require('fuzzy-finder')
 
 -- Themes
 vim.cmd("colorscheme everblush")

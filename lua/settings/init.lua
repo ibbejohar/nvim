@@ -7,6 +7,7 @@ set.termguicolors = true
 set.laststatus = 3
 set.number = true
 vim.cmd("set noshowmode")
+set.clipboard = "unnamedplus"
 
 -- Tab
 set.expandtab = true

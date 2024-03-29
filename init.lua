@@ -6,7 +6,24 @@ require('keybinding')
 require('nvim-cmp')
 require('statusline')
 require('lsp-config')
-require('fzf-config')
+require('tree-sitter')
+require('mason-lsp')
+require('telescope')
 
 -- Themes
 vim.cmd("colorscheme everblush")
+vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+
+require('neorg').setup {
+    load = {
+        ["core.defaults"] = {},
+        ["core.concealer"] = {},
+        ["core.dirman"] = {
+            config = {
+                workspaces = {
+                    default = "~/Documents/notes",
+                }
+            }
+        }
+    }
+}

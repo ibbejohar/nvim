@@ -33,12 +33,30 @@ return require'packer'.startup(function() use "wbthomason/packer.nvim"
     use { "catppuccin/nvim", as = "catppuccin" }
 
     -- Vimwiki
-    use "vimwiki/vimwiki"
+--    use "vimwiki/vimwiki"
       
     -- Smooth Scrolling
     use "psliwka/vim-smoothie"
     -- Fuzzy Finder
-    use 'ibhagwan/fzf-lua'
+    use {
+        "nvim-telescope/telescope.nvim", 
+        tag = '0.1.6',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
     -- NIX
     use "LnL7/vim-nix"
+    -- Tree sitter
+    use "nvim-treesitter/nvim-treesitter"
+    use "nvim-treesitter/nvim-treesitter-textobjects"
+    -- Mason
+    use "williamboman/mason.nvim"
+    use "williamboman/mason-lspconfig.nvim"
+
+    -- Neorg
+    use {
+    "nvim-neorg/neorg",
+    rocks = { "lua-utils.nvim", "nvim-nio", "nui.nvim", "plenary.nvim" },
+    run = ":Neorg sync-parsers",
+    tag = "v8.0.0",
+    } 
 end)

@@ -9,21 +9,8 @@ require('lsp-config')
 require('tree-sitter')
 require('mason-lsp')
 require('fuzzy-finder')
+require('markdown-conceal')
 
 -- Themes
 vim.cmd("colorscheme everblush")
 vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
-
-require('neorg').setup {
-    load = {
-        ["core.defaults"] = {},
-        ["core.concealer"] = {},
-        ["core.dirman"] = {
-            config = {
-                workspaces = {
-                    default = "~/Documents/notes",
-                }
-            }
-        }
-    }
-}

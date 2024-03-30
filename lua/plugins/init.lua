@@ -33,7 +33,18 @@ return require'packer'.startup(function() use "wbthomason/packer.nvim"
     use { "catppuccin/nvim", as = "catppuccin" }
 
     -- Vimwiki
---    use "vimwiki/vimwiki"
+    use "vimwiki/vimwiki"
+    use {
+        "lukas-reineke/headlines.nvim",
+        requires = { {'nvim-treesitter'} },
+        config = function()
+            require("headlines").setup()
+            vimwiki = { -- this might be ['vimwiki.markdown'] depending on your vimwiki configuration
+        treesitter_language = "markdown",
+        -- copy configuration for markdown here
+    }
+        end,
+    }
       
     -- Smooth Scrolling
     use "psliwka/vim-smoothie"
@@ -53,10 +64,5 @@ return require'packer'.startup(function() use "wbthomason/packer.nvim"
     use "williamboman/mason-lspconfig.nvim"
 
     -- Neorg
-    use {
-    "nvim-neorg/neorg",
-    rocks = { "lua-utils.nvim", "nvim-nio", "nui.nvim", "plenary.nvim" },
-    run = ":Neorg sync-parsers",
-    tag = "v8.0.0",
-    } 
+
 end)

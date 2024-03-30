@@ -36,10 +36,21 @@ set.inccommand = "split"
 -- Wraping
 set.wrap = false
 
+-- Conceal
+set.conceallevel = 2
 
 -- Vimwiki
-vim.cmd("let g:vimwiki_list = [{'path': '~/Documents/vimwiki/', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1}]") -- Change from default vimwiki syntax to markdown
+--vim.cmd("let g:vimwiki_list = [{'path': '~/Documents/notes/', 'syntax': 'markdown', 'ext': '.md', 'auto_diary_index': 1}]") -- Change from default vimwiki syntax to markdown
 --vim.cmd("autocmd VimEnter * if argc() == 0 | execute 'VimwikiIndex' | endif") -- Execute vimwiki without argument
+vim.g.vimwiki_list = {
+    {
+    path = "~/Documents/notes",
+    syntax = "markdown",
+    ext = ".md",
+    }
+}
+
+vim.g.vimwiki_global_ext = 0
 
 -- Zen mode
 vim.cmd("nnoremap <leader><ENTER> :ZenMode<CR>")
@@ -50,6 +61,3 @@ vim.cmd("nnoremap <leader>C :colorscheme everblush<CR>")
 
 vim.cmd("let ayucolor='light'")
 --vim.cmd("nnoremap <leader>d :hi Conceal guibg=NONE ctermbg=NONE<CR>")
-
--- Neorg
-bind.set('n', '<leader>ww', ':Neorg index', {})

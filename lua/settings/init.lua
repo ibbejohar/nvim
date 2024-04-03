@@ -46,6 +46,9 @@ set.termguicolors = true
 -- Concealer
 set.conceallevel = 2
 
+-- Statusline
+set.showmode = false
+
 -- She Bang
 vim.cmd("let @b=\"i#!/usr/bin/env bash\"")
 

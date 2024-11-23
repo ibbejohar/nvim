@@ -3,6 +3,15 @@ local opts = { noremap=true, silent=true }
 local keymap = vim.keymap.set
 local bufopts = { noremap=true, silent=true, buffer=bufnr }
 
+local lsp_flags = {
+    debounce_text_changes = 150,  -- Set debounce time for change events
+}
+
+
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = { "pyright" }
+})
 
 -- Mappings
 local on_attach = function(client, bufnr)
@@ -17,14 +26,18 @@ local on_attach = function(client, bufnr)
 
 end
 
--- Rust
-require("lspconfig")["rust_analyzer"].setup{
+require("lspconfig").rust_analyzer.setup{
     on_attach = on_attach,
     flags = lsp_flags,
     settings = {
-        ["rust_analyzer"] = {}
-    }
+        ["rust-analyzer"] = {
+            assist = { importGranularity = "module", importPrefix = "self" },
+            cargo = { loadOutDirsFromCheck = true },
+            procMacro = { enable = true },
+        },
+    },
 }
+
 
 -- Python
 require("lspconfig")["pyright"].setup{
@@ -32,6 +45,20 @@ require("lspconfig")["pyright"].setup{
     flags = lsp_flags,
     settings = {
         ["pyright"] = {}
+    }
+}
+
+require("lspconfig")["lua_ls"].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    settings = {
+        ["lua-language-server"] = {},
+        Lua = {
+            telemetry = { enable = false },
+            completion = {
+                callSnippet = "Replace",
+            }
+        }
     }
 }
 

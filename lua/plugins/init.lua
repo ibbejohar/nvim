@@ -1,3 +1,7 @@
+local Notes = {
+    path = "~/Documents/notes",
+    images = "images",
+}
 -- Lazy plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -136,12 +140,6 @@ require("lazy").setup({
         config = function()
             local lspconfig = require("lspconfig")
             lspconfig.clangd.setup({})
-            lspconfig.rust_analyzer.setup {
-                -- Server-specific settings. See `:help lspconfig-setup`
-                settings = {
-                    ['rust-analyzer'] = {},
-                },
-            }
         end,
     },
     {
@@ -179,46 +177,46 @@ require("lazy").setup({
     {
         "preservim/vim-pencil", 
     },
-    {
-        "3rd/image.nvim",
-        config = function()
-            require("image").setup({
-                backend = "ueberzug",
-                integrations = {
-                    markdown = {
-                        enabled = true,
-                        clear_in_insert_mode = false,
-                        download_remote_images = true,
-                        only_render_image_at_cursor = true,
-                        filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
-                    },
-                    neorg = {
-                        enabled = true,
-                        clear_in_insert_mode = true,
-                        download_remote_images = true,
-                        only_render_image_at_cursor = true,
-                        filetypes = { "norg" },
-                    },
-                },
-                max_width = 30,
-                max_height = nil,
-                max_width_window_percentage = nil,
-                max_height_window_percentage = nil,
-                window_overlap_clear_enabled = false, -- toggles images when windows are overlapped
-                window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
-                editor_only_render_when_focused = false, -- auto show/hide images when the editor gains/looses focus
-                tmux_show_only_in_active_window = false, -- auto show/hide images in the correct Tmux window (needs visual-activity off)
-                hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" }, -- render image files as images when opened
-            })
+   {
+       "3rd/image.nvim",
+       config = function()
+           require("image").setup({
+               backend = "ueberzug",
+               integrations = {
+                   markdown = {
+                       enabled = true,
+                       clear_in_insert_mode = false,
+                       download_remote_images = true,
+                       only_render_image_at_cursor = true,
+                       filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
+                   },
+                   neorg = {
+                       enabled = true,
+                       clear_in_insert_mode = false,
+                       download_remote_images = true,
+                       only_render_image_at_cursor = true,
+                       filetypes = { "norg" },
+                   },
+               },
+               max_width = 30,
+               max_height = nil,
+               max_width_window_percentage = nil,
+               max_height_window_percentage = nil,
+               window_overlap_clear_enabled = false, -- toggles images when windows are overlapped
+               window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+               editor_only_render_when_focused = false, -- auto show/hide images when the editor gains/looses focus
+               tmux_show_only_in_active_window = false, -- auto show/hide images in the correct Tmux window (needs visual-activity off)
+               hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" }, -- render image files as images when opened
+           })
 
 
-        end
-    },
-    {
-        "m4xshen/hardtime.nvim",
-        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-        opts = {}
-    },
+       end
+   },
+--    {
+--        "m4xshen/hardtime.nvim",
+--        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+--        opts = {}
+--    },
     {
         'stevearc/oil.nvim',
         opts = {},
@@ -239,26 +237,92 @@ require("lazy").setup({
         config = true,
     },
     {
+        "S1M0N38/love2d.nvim",
+        cmd = "LoveRun",
+        opts = { },
+        keys = {
+            { "<leader>v", ft = "lua", desc = "LÖVE" },
+            { "<leader>vv", "<cmd>LoveRun<cr>", ft = "lua", desc = "Run LÖVE" },
+            { "<leader>vs", "<cmd>LoveStop<cr>", ft = "lua", desc = "Stop LÖVE" },
+        },
+    },
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+        keys = {
+            {
+                "<leader>?",
+                function()
+                    require("which-key").show({ global = false })
+                end,
+                desc = "Buffer Local Keymaps (which-key)",
+            },
+        },
+    },
+    {
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- add options here
+            -- or leave it empty to use the default settings
+            filetypes = {
+                norg = {
+                    dir_path = "images", ---@type string | fun(): string
+                    relative_to_current_file = true, ---@type boolean | fun(): boolean
+                    url_encode_path = true, ---@type boolean | fun(): boolean
+                    template = ".$CURSOR $FILE_PATH", ---@type string | fun(context: table): string
+                    download_images = true, ---@type boolean | fun(): boolean
+                },
+            },
+        },
+        keys = {
+            -- suggested keymap
+            { "<leader>p", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
+        },
+    },
+    {
         "nvim-neorg/neorg",
         dependencies = { "luarocks.nvim" },
         lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
-        version = "*", -- Pin Neorg to the latest stable release
+        version = "9.1.1", -- Pin Neorg to the latest stable release
         config = function()
             require("neorg").setup({
                 load = {
                     ["core.defaults"] = {},
-                    ["core.concealer"] = {},
+                    ["core.concealer"] = {
+                      config = {
+                          icons = {
+                              code_block = {
+                                  conceal = true,
+                                  content_only = true,
+                                  insert_enabled = true,
+                              },
+                          },
+                      },
+                    },
                     ["core.itero"] = {},
                     ["core.promo"] = {},
+                    ["core.completion"] = {
+                        config = {
+                            engine = "nvim-cmp"
+                        }
+                    },
+                    ["core.integrations.nvim-cmp"] = {},
                     ["core.export"] = {},
                     ["core.ui.calendar"] = {},
                     ["core.summary"] = {},
                     ["core.integrations.image"] = {},
+                    ["core.integrations.treesitter"] = {},
                     ["core.latex.renderer"] = {},
                     ["core.dirman"] = {
                         config = {
                             workspaces = {
-                                notes = "~/Documents/notes",
+                                notes = Notes.path,
                             },
                             default_workspace = "notes",
                         },
@@ -267,5 +331,5 @@ require("lazy").setup({
 
             })
         end,
-    }
+    },
 })

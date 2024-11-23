@@ -1,6 +1,6 @@
 require("settings")
 require("plugins")
 require("nvim-cmp")
---require("lsp-config")
+require("lsp-config")
 require("statusline")
 require("zen-mode-config")

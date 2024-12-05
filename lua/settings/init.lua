@@ -56,3 +56,5 @@ bind("n", "<leader>ww", ":Neorg index<CR>", {})
 bind("n", "<leader>wr", ":Neorg return<CR>", {})
 -- viwo<Esc>
 bind("n", "<leader>l", "@r", {})
+
+bind("n", "<leader>n", ":lua require(\"nabla\").popup()<CR>")

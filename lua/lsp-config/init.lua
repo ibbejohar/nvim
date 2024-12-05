@@ -48,6 +48,13 @@ require("lspconfig")["pyright"].setup{
     }
 }
 
+require("lspconfig")["clangd"].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    settings = {
+        ["clangd"] = {}
+    }
+}
 require("lspconfig")["lua_ls"].setup{
     on_attach = on_attach,
     flags = lsp_flags,

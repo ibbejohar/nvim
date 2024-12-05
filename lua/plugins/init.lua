@@ -285,6 +285,10 @@ require("lazy").setup({
             { "<leader>p", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
         },
     },
+     { "jbyuki/nabla.nvim" },
+     {
+         "dhruvasagar/vim-table-mode"
+     },
     {
         "nvim-neorg/neorg",
         dependencies = { "luarocks.nvim" },
@@ -316,6 +320,13 @@ require("lazy").setup({
                     ["core.export"] = {},
                     ["core.ui.calendar"] = {},
                     ["core.summary"] = {},
+                    ["core.esupports.metagen"] = {
+                        config = {
+                            timezone = "implicit-local",
+                            type = "none",
+                            update_date = true
+                        }
+                    },
                     ["core.integrations.image"] = {},
                     ["core.integrations.treesitter"] = {},
                     ["core.latex.renderer"] = {},

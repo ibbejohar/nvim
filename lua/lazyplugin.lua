@@ -20,5 +20,19 @@ require("lazy").setup({
     spec = {
         { import = "plugins.git" },
         { import = "plugins.fzf" },
-    }
+        { import = "plugins.everblush" },
+    },
+    install = { colorscheme = { "everblush"} },
 })
+    vim.cmd.colorscheme "everblush"
+    vim.opt.cursorline = true
+    vim.cmd [[
+    highlight Normal       ctermbg=none guibg=none
+    highlight NormalNC     ctermbg=none guibg=none
+    highlight EndOfBuffer  ctermbg=none guibg=none
+    highlight LineNr       ctermbg=none guibg=none
+    highlight SignColumn   ctermbg=none guibg=none
+    highlight VertSplit    ctermbg=none guibg=none
+    highlight CursorLineNr guifg=#228B22 guibg=none
+    highlight CursorLine ctermbg=none guibg=none
+    ]]

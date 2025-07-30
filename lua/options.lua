@@ -43,3 +43,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.schedule(function()
     opt.clipboard = "unnamedplus"
 end)
+

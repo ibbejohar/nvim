@@ -1,17 +1,22 @@
 return {
     "ibhagwan/fzf-lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = { 
+    opts = {
   winopts = {
       height = 0.3,         -- Set the height of the window to 30% of screen
       width = 1.0,          -- Full width of the window
       row = 1.0,            -- Align the window to the bottom of the screen (1.0 is the bottom)
-      col = 0.0,            -- Align to the left of the screen (default)
-      layout = 'reverse',   -- 'reverse' layout to make results flow upwards
-      --preview = { hidden = 'hidden' },
+--      col = 0.0,            -- Align to the left of the screen (default)
+      --layout = "reserve",   -- 'reverse' layout to make results flow upwards
+      preview = { vertical = "up" },
     },
         fzf_opts = {
-            ["--layout"] = "reverse-list",
+            ["--ansi"]           = true,
+            ["--info"]           = "inline-right", -- fzf < v0.42 = "inline"
+            ["--height"]         = "100%",
+            ["--layout"]         = "default",
+            ["--border"]         = "none",
+            ["--highlight-line"] = true,
         },
     },
 
@@ -29,4 +34,6 @@ return {
             end
         end)
     end,
+
+        vim.keymap.set("n", "<leader>fb", ":FzfLua buffers<CR>")
 }

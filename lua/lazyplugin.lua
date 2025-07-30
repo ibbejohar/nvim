@@ -20,11 +20,13 @@ require("lazy").setup({
     spec = {
         { import = "plugins.git" },
         { import = "plugins.fzf" },
-        { import = "plugins.everblush" },
+        { import = "plugins.tokyonight" },
+        { import = "plugins.oil" },
+        { import = "plugins.lualine" },
     },
-    install = { colorscheme = { "everblush"} },
+    install = { colorscheme = { "tokyonight-night"} },
 })
-    vim.cmd.colorscheme "everblush"
+    vim.cmd.colorscheme "tokyonight-night"
     vim.opt.cursorline = true
     vim.cmd [[
     highlight Normal       ctermbg=none guibg=none

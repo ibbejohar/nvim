@@ -4,6 +4,7 @@ vim.g.mapleader = " "
 vim.g.have_nerd_font = true
 
 opt.termguicolors = true
+opt.showmode = false
 
 opt.relativenumber = true
 opt.number = true
@@ -33,6 +34,10 @@ opt.softtabstop = 4
 
 map("n", "<leader>o", ":update<CR> :source<CR>")
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
+-- Disables command history pane
+map("n", "q:", "<nop>")
+-- Disables macro key
+map("n", "q", "<nop>")
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     callback = function()

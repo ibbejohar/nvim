@@ -3,7 +3,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
   winopts = {
-      height = 0.3,         -- Set the height of the window to 30% of screen
+      --height = 0.3,         -- Set the height of the window to 30% of screen
       width = 1.0,          -- Full width of the window
       row = 1.0,            -- Align the window to the bottom of the screen (1.0 is the bottom)
 --      col = 0.0,            -- Align to the left of the screen (default)

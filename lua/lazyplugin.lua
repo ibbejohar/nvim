@@ -28,13 +28,11 @@ require("lazy").setup({
 })
     vim.cmd.colorscheme "tokyonight-night"
     vim.opt.cursorline = true
-    vim.cmd [[
-    highlight Normal       ctermbg=none guibg=none
-    highlight NormalNC     ctermbg=none guibg=none
-    highlight EndOfBuffer  ctermbg=none guibg=none
-    highlight LineNr       ctermbg=none guibg=none
-    highlight SignColumn   ctermbg=none guibg=none
-    highlight VertSplit    ctermbg=none guibg=none
-    highlight CursorLineNr guifg=#228B22 guibg=none
-    highlight CursorLine ctermbg=none guibg=none
-    ]]
+    vim.api.nvim_set_hl(0, "Normal", { bg = "none"})
+    vim.api.nvim_set_hl(0, "NormalNC", { bg = "none"})
+    vim.api.nvim_set_hl(0, "ENDOfBuffer", { bg = "none"})
+    vim.api.nvim_set_hl(0, "LineNr", { bg = "none"})
+    vim.api.nvim_set_hl(0, "SignColumn", { bg = "none"})
+    vim.api.nvim_set_hl(0, "VertSplit", { bg = "none"})
+    vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none", fg = "#228B22"})
+    vim.api.nvim_set_hl(0, "CursorLine", { bg = "none"})

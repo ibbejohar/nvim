@@ -32,6 +32,8 @@ opt.shiftwidth = 4
 opt.smarttab = true
 opt.softtabstop = 4
 
+opt.showmatch = true
+
 map("n", "<leader>o", ":update<CR> :source<CR>")
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- Disables command history pane
@@ -48,4 +50,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.schedule(function()
     opt.clipboard = "unnamedplus"
 end)
-

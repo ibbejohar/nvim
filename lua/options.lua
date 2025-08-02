@@ -50,3 +50,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.schedule(function()
     opt.clipboard = "unnamedplus"
 end)
+vim.cmd("let g:vimwiki_list = [{'path': '~/Documents/notes', 'syntax': 'markdown', 'ext': '.md'}]")
+vim.cmd("let g:vimwiki_global_ext = 0")

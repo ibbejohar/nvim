@@ -6,7 +6,10 @@ return {
     ---@type render.md.UserConfig
     opts = {},
     config = function()
-    require('render-markdown').setup({ file_types = { 'markdown', 'vimwiki' },})
+    require('render-markdown').setup({ 
+        file_types = { 'markdown', 'vimwiki' },
+        render_modes = true,
+    })
     vim.treesitter.language.register('markdown', 'vimwiki')
     end,
 }

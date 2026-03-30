@@ -27,11 +27,15 @@ require("lazy").setup({
         { import = "plugins.smoothie" },
         { import = "plugins.nix" },
         { import = "plugins.treesitter" },
-        --{ import = "plugins.neorg" },
-        { import = "plugins.vimwiki" },
+        { import = "plugins.neorg" },
+        --{ import = "plugins.vimwiki" },
         { import = "plugins.markdown" },
-        { import = "plugins.lazydev" },
-        { import = "plugins.cmp" },
+        { import = "plugins.lsp-config" },
+        { import = "plugins.auto-save" },
+        { import = "plugins.auto-table" },
+        { import = "plugins.vim-pencil" },
+        { import = "plugins.zen-mode" },
+        { import = "plugins.image" },
     },
     install = { colorscheme = { "tokyonight-night"} },
 })
@@ -43,5 +47,5 @@ require("lazy").setup({
     vim.api.nvim_set_hl(0, "LineNr", { bg = "none"})
     vim.api.nvim_set_hl(0, "SignColumn", { bg = "none"})
     vim.api.nvim_set_hl(0, "VertSplit", { bg = "none"})
-    vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none", fg = "#228B22"})
+    vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none", fg = "#225222"})
     vim.api.nvim_set_hl(0, "CursorLine", { bg = "none"})

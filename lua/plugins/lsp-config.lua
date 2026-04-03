@@ -50,7 +50,7 @@ return {
 
         end
 
-        require("lspconfig").rust_analyzer.setup{
+        vim.lsp.config("rust_analyzer", {
             on_attach = on_attach,
             flags = lsp_flags,
             settings = {
@@ -60,7 +60,7 @@ return {
                     procMacro = { enable = true },
                 },
             },
-        }
+        })
 
 
         -- Python
@@ -72,14 +72,14 @@ return {
                 --     }
                 -- }
 
-                require("lspconfig")["clangd"].setup{
+                vim.lsp.config("clangd", {
                     on_attach = on_attach,
                     flags = lsp_flags,
                     settings = {
                         ["clang"] = {}
                     }
-                }
-                require("lspconfig")["lua_ls"].setup{
+                })
+                vim.lsp.config("lua_ls", {
                     on_attach = on_attach,
                     flags = lsp_flags,
                     settings = {
@@ -91,14 +91,16 @@ return {
                             }
                         }
                     }
-                }
-                require("lspconfig")["nixd"].setup{
+                })
+                vim.lsp.config("nixd", {
                     on_attach = on_attach,
                     flags = lsp_flags,
                     settings = {
                         ["nixd"] = {}
                     }
-                }
+                })
+
+                vim.lsp.enable({"rust_analyzer", "clangd", "lua_ls", "nixd"})
 
                 -- Bash
                 vim.api.nvim_create_autocmd('FileType', {

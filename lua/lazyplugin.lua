@@ -29,7 +29,7 @@ require("lazy").setup({
         { import = "plugins.treesitter" },
         { import = "plugins.neorg" },
         --{ import = "plugins.vimwiki" },
-        { import = "plugins.markdown" },
+        --{ import = "plugins.markdown" },
         { import = "plugins.lsp-config" },
         { import = "plugins.auto-save" },
         { import = "plugins.auto-table" },

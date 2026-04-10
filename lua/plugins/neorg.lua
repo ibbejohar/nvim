@@ -38,7 +38,7 @@ return {
                 ["core.summary"] = {},
                 ["core.integrations.nvim-cmp"] = {},
                 ["core.integrations.treesitter"] = {},
-                ["core.integrations.image"] = {},
+                --["core.integrations.image"] = {},
                 ["core.esupports.metagen"] = {
                     config = {
                         timezone = "implicit-local",

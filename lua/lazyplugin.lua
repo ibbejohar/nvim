@@ -35,7 +35,7 @@ require("lazy").setup({
         { import = "plugins.auto-table" },
         { import = "plugins.vim-pencil" },
         { import = "plugins.zen-mode" },
-        { import = "plugins.image" },
+        --{ import = "plugins.image" },
     },
     install = { colorscheme = { "tokyonight-night"} },
 })

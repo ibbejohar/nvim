@@ -63,8 +63,3 @@ vim.keymap.set('n', '<leader>fs', select_spelllang, { desc = "FZF: Select spelll
 -- for from, to in pairs(colemak_sv) do
 --   vim.keymap.set("i", from, to, { noremap = true })
 -- end
-
-package.path = "/nix/store/wc7ppv1z8z3qyz3pn66mj5544f73j7vb-luajit-2.1.1741730670-env/share/lua/5.1/?.lua;/nix/store/wc7ppv1z8z3qyz3pn66mj5544f73j7vb-luajit-2.1.1741730670-env/share/lua/5.1/?/init.lua".. ";" .. package.path
-package.cpath = "/nix/store/wc7ppv1z8z3qyz3pn66mj5544f73j7vb-luajit-2.1.1741730670-env/lib/lua/5.1/?.so".. ";" .. package.cpath
-
-vim.g.loaded_node_provider=0;vim.g.loaded_perl_provider=0;vim.g.loaded_ruby_provider=0;vim.g.python3_host_prog='/nix/store/mmnm32w0fnzz0z39sqri6z3wdrcg458x-nvim-host-python3-3.13.12-env/bin/nvim-python3'

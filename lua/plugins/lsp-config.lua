@@ -24,18 +24,13 @@ return {
     },
     config = function()
         -- Variables
-        local opts = { noremap=true, silent=true }
-        local keymap = vim.keymap.set 
+        -- local opts = { noremap=true, silent=true }
+        local keymap = vim.keymap.set
         local bufopts = { noremap=true, silent=true, buffer=bufnr }
 
         local lsp_flags = {
             debounce_text_changes = 150,  -- Set debounce time for change events
         }
-
-        --require("mason").setup()
-        -- require("mason-lspconfig").setup({
-            -- ensure_installed = { "lua-language-server" }
-        -- })
 
         -- Mappings
         local on_attach = function(client, bufnr)
@@ -47,6 +42,7 @@ return {
             keymap("n", "gi", vim.lsp.buf.implementation, bufopts)
             keymap("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
             keymap("n", "gt", vim.lsp.buf.type_definition, bufopts)
+            keymap("n", "<leader>dd", vim.diagnostic.open_float, bufopts)
 
         end
 
@@ -61,16 +57,6 @@ return {
                 },
             },
         })
-
-
-        -- Python
-        -- require("lspconfig")["pyright"].setup{
-            --     on_attach = on_attach,
-            --     flags = lsp_flags,
-            --     settings = {
-                --         ["pyright"] = {}
-                --     }
-                -- }
 
                 vim.lsp.config("clangd", {
                     on_attach = on_attach,
@@ -128,6 +114,7 @@ return {
                     window = {
                         -- completion = cmp.config.window.bordered(),
                         -- documentation = cmp.config.window.bordered(),
+
                     },
                     mapping = cmp.mapping.preset.insert({
                         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
